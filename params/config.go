@@ -27,8 +27,8 @@ import (
 
 // Genesis hashes to enforce below configs on.
 var (
-	MainnetGenesisHash = common.HexToHash("0x5751d1772ebc82d52d19d96157bb3f13ca8417217e3c0913adf15f04eb4cb144")
-	TestnetGenesisHash = common.HexToHash("0xb24b1124276b1250ad3b2c02623677bce3e76c1539f76dcdfe4c27ab991c1dad")
+	MainnetGenesisHash = common.HexToHash("0x7eb442ecda3db6ae27376de2b34dfae802d3ab13ebba7544eba103ca619e32ed")
+	TestnetGenesisHash = common.HexToHash("0xc1a25025b5fcd7526368faa9ae5916f94846d6de283faa6448a9167f601116cc")
 )
 
 // TrustedCheckpoints associates each known checkpoint with the genesis hash of
@@ -42,7 +42,7 @@ var CheckpointOracles = map[common.Hash]*CheckpointOracleConfig{}
 var (
 	// MainnetChainConfig is the chain parameters to run a node on the main network.
 	MainnetChainConfig = &ChainConfig{
-		ChainID:             big.NewInt(128),
+		ChainID:             big.NewInt(70),
 		HomesteadBlock:      big.NewInt(0),
 		DAOForkBlock:        nil,
 		DAOForkSupport:      true,
@@ -54,10 +54,10 @@ var (
 		PetersburgBlock:     big.NewInt(0),
 		IstanbulBlock:       big.NewInt(0),
 		MuirGlacierBlock:    nil,
-		RedCoastBlock:       big.NewInt(6618800),
-		BerlinBlock:         big.NewInt(8577000),
-		LondonBlock:         big.NewInt(8577000),
-		SophonBlock:         big.NewInt(8577000),
+		RedCoastBlock:       big.NewInt(727936),
+		BerlinBlock:         big.NewInt(728136),
+		LondonBlock:         big.NewInt(728136),
+		SophonBlock:         big.NewInt(728136),
 		ArrowGlacierBlock:   nil,
 
 		Congress: &CongressConfig{
@@ -70,7 +70,7 @@ var (
 
 	// TestnetChainConfig contains the chain parameters to run a node on the YOLOv1 test network.
 	TestnetChainConfig = &ChainConfig{
-		ChainID:             big.NewInt(256),
+		ChainID:             big.NewInt(170),
 		HomesteadBlock:      big.NewInt(0),
 		DAOForkBlock:        nil,
 		DAOForkSupport:      true,
@@ -82,10 +82,10 @@ var (
 		PetersburgBlock:     big.NewInt(0),
 		IstanbulBlock:       big.NewInt(0),
 		MuirGlacierBlock:    nil,
-		RedCoastBlock:       big.NewInt(6072600),
-		BerlinBlock:         big.NewInt(8290000),
-		LondonBlock:         big.NewInt(8290000),
-		SophonBlock:         big.NewInt(8290000),
+		RedCoastBlock:       big.NewInt(727936),
+		BerlinBlock:         big.NewInt(728136),
+		LondonBlock:         big.NewInt(728136),
+		SophonBlock:         big.NewInt(728136),
 		Congress: &CongressConfig{
 			Period: 3,
 			Epoch:  200,

@@ -14,8 +14,8 @@ import (
 )
 
 var (
-	validatorV1Admin        = common.HexToAddress("0xD849fa4D5475276568eC21f6deBf1C8A889Aa81B")
-	validatorV1AdminTestnet = common.HexToAddress("0x0dA5ac74D30D5b3c5ca9167A8666Ca98Fd58d9fb")
+	validatorV1Admin        = common.HexToAddress("0x598FeaB9ff6A090a7fAA9dF0F3B4df3F0c8D35FC")
+	validatorV1AdminTestnet = common.HexToAddress("0xc6AF1E96Cb0Fe864ccfC1d1Dcf4239A233A9B72a")
 )
 
 const (
