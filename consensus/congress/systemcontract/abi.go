@@ -1,11 +1,12 @@
 package systemcontract
 
 import (
+	"math/big"
+	"strings"
+
 	"github.com/ethereum/go-ethereum/accounts/abi"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/params"
-	"math/big"
-	"strings"
 )
 
 // ValidatorsInteractiveABI contains all methods to interactive with validator contracts.
@@ -576,14 +577,14 @@ func GetInteractiveABI() map[string]abi.ABI {
 }
 
 func GetValidatorAddr(blockNum *big.Int, config *params.ChainConfig) *common.Address {
-	if config.IsRedCoast(blockNum) {
+	if config.IsTiger(blockNum) {
 		return &ValidatorsV1ContractAddr
 	}
 	return &ValidatorsContractAddr
 }
 
 func GetPunishAddr(blockNum *big.Int, config *params.ChainConfig) *common.Address {
-	if config.IsRedCoast(blockNum) {
+	if config.IsTiger(blockNum) {
 		return &PunishV1ContractAddr
 	}
 	return &PunishContractAddr

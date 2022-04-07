@@ -2,6 +2,7 @@
   "config": {
     "chainId": 170,
     "homesteadBlock": 0,
+    "daoForkSupport": true,
     "eip150Block": 0,
     "eip150Hash": "0x0000000000000000000000000000000000000000000000000000000000000000",
     "eip155Block": 0,
@@ -11,10 +12,11 @@
     "petersburgBlock": 0,
     "istanbulBlock": 0,
     "muirGlacierBlock": 0,
-    "congress": {
-      "period": 3,
-      "epoch": 200
-    }
+    "berlinBlock": 10288231,
+    "londonBlock": 10288231,
+    "tigerBlock": 10278231,
+    "sophonBlock": 10288231,
+    "congress": { "period": 3, "epoch": 200, "enableDevVerification": true }
   },
   "nonce": "0x0",
   "timestamp": "0x607ede61",
@@ -40,5 +42,6 @@
   },
   "number": "0x0",
   "gasUsed": "0x0",
-  "parentHash": "0x0000000000000000000000000000000000000000000000000000000000000000"
+  "parentHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+  "baseFeePerGas": null
 }
