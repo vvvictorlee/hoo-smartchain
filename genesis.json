@@ -13,7 +13,7 @@
     "istanbulBlock": 0,
     "berlinBlock": 8577000,
     "londonBlock": 8577000,
-    "tigerBlock": 6618800,
+    "moonBlock": 6618800,
     "sophonBlock": 8577000,
     "congress": { "period": 3, "epoch": 200, "enableDevVerification": true }
   },

@@ -54,7 +54,7 @@ var (
 		PetersburgBlock:     big.NewInt(0),
 		IstanbulBlock:       big.NewInt(0),
 		MuirGlacierBlock:    nil,
-		TigerBlock:          big.NewInt(12733058),
+		MoonBlock:           big.NewInt(12733058),
 		BerlinBlock:         big.NewInt(12833058),
 		LondonBlock:         big.NewInt(12833058),
 		SophonBlock:         big.NewInt(12833058),
@@ -82,7 +82,7 @@ var (
 		PetersburgBlock:     big.NewInt(0),
 		IstanbulBlock:       big.NewInt(0),
 		MuirGlacierBlock:    nil,
-		TigerBlock:          big.NewInt(10278231),
+		MoonBlock:           big.NewInt(10278231),
 		BerlinBlock:         big.NewInt(10288231),
 		LondonBlock:         big.NewInt(10288231),
 		SophonBlock:         big.NewInt(10288231),
@@ -212,8 +212,8 @@ type ChainConfig struct {
 	// the network that triggers the consensus upgrade.
 	TerminalTotalDifficulty *big.Int `json:"terminalTotalDifficulty,omitempty"`
 
-	TigerBlock  *big.Int `json:"tigerBlock,omitempty"`  // Tiger switch block (nil = no fork, set value ≥ 2 to activate it)
-	SophonBlock *big.Int `json:"sophonBlock,omitempty"` // Sophon switch block (nil = no fork, set > TigerBlock to activate it)
+	MoonBlock   *big.Int `json:"moonBlock,omitempty"`   // Moon switch block (nil = no fork, set value ≥ 2 to activate it)
+	SophonBlock *big.Int `json:"sophonBlock,omitempty"` // Sophon switch block (nil = no fork, set > MoonBlock to activate it)
 
 	// Various consensus engines
 	Ethash   *EthashConfig   `json:"ethash,omitempty"`
@@ -266,7 +266,7 @@ func (c *ChainConfig) String() string {
 	default:
 		engine = "unknown"
 	}
-	return fmt.Sprintf("{ChainID: %v Homestead: %v DAO: %v DAOSupport: %v EIP150: %v EIP155: %v EIP158: %v Byzantium: %v Constantinople: %v Petersburg: %v Istanbul: %v, Muir Glacier: %v, TigerBlock: %v, Berlin: %v, London: %v, Sophon: %v, Engine: %v}",
+	return fmt.Sprintf("{ChainID: %v Homestead: %v DAO: %v DAOSupport: %v EIP150: %v EIP155: %v EIP158: %v Byzantium: %v Constantinople: %v Petersburg: %v Istanbul: %v, Muir Glacier: %v, MoonBlock: %v, Berlin: %v, London: %v, Sophon: %v, Engine: %v}",
 		c.ChainID,
 		c.HomesteadBlock,
 		c.DAOForkBlock,
@@ -279,7 +279,7 @@ func (c *ChainConfig) String() string {
 		c.PetersburgBlock,
 		c.IstanbulBlock,
 		c.MuirGlacierBlock,
-		c.TigerBlock,
+		c.MoonBlock,
 		c.BerlinBlock,
 		c.LondonBlock,
 		c.SophonBlock,
@@ -362,9 +362,9 @@ func (c *ChainConfig) IsTerminalPoWBlock(parentTotalDiff *big.Int, totalDiff *bi
 	return parentTotalDiff.Cmp(c.TerminalTotalDifficulty) < 0 && totalDiff.Cmp(c.TerminalTotalDifficulty) >= 0
 }
 
-// IsTiger returns whether num represents a block number after the Tiger fork
-func (c *ChainConfig) IsTiger(num *big.Int) bool {
-	return isForked(c.TigerBlock, num)
+// IsMoon returns whether num represents a block number after the Moon fork
+func (c *ChainConfig) IsMoon(num *big.Int) bool {
+	return isForked(c.MoonBlock, num)
 }
 
 // IsSophon returns whether num represents a block number after the SophonBlock fork
@@ -435,7 +435,7 @@ func (c *ChainConfig) CheckConfigForkOrder() error {
 	// congress fork
 	lastFork = fork{}
 	for _, cur := range []fork{
-		{name: "tigerBlock", block: c.TigerBlock, minValue: big.NewInt(2)},
+		{name: "moonBlock", block: c.MoonBlock, minValue: big.NewInt(2)},
 		{name: "sophonBlock", block: c.SophonBlock},
 	} {
 		// check minimal fork block
@@ -512,8 +512,8 @@ func (c *ChainConfig) checkCompatible(newcfg *ChainConfig, head *big.Int) *Confi
 	if isForkIncompatible(c.LondonBlock, newcfg.LondonBlock, head) {
 		return newCompatError("London fork block", c.LondonBlock, newcfg.LondonBlock)
 	}
-	if isForkIncompatible(c.TigerBlock, newcfg.TigerBlock, head) {
-		return newCompatError("Tiger fork block", c.TigerBlock, newcfg.TigerBlock)
+	if isForkIncompatible(c.MoonBlock, newcfg.MoonBlock, head) {
+		return newCompatError("Moon fork block", c.MoonBlock, newcfg.MoonBlock)
 	}
 	if isForkIncompatible(c.ArrowGlacierBlock, newcfg.ArrowGlacierBlock, head) {
 		return newCompatError("Arrow Glacier fork block", c.ArrowGlacierBlock, newcfg.ArrowGlacierBlock)

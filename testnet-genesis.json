@@ -14,7 +14,7 @@
     "muirGlacierBlock": 0,
     "berlinBlock": 10288231,
     "londonBlock": 10288231,
-    "tigerBlock": 10278231,
+    "moonBlock": 10278231,
     "sophonBlock": 10288231,
     "congress": { "period": 3, "epoch": 200, "enableDevVerification": true }
   },
